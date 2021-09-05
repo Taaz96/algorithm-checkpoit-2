@@ -1,0 +1,126 @@
+//task1: SUM OF  DISTINCTS ELEMENTS
+	//SOLUTION1: TWO ARRAYS
+ALGORITHM SUM_ALL_DISTINCTS_ELEMENTS
+ 
+
+   var
+        tab1: table of INTEGER[50];
+        tab2:  table of INTEGER[50];
+        sum: INTEGER;
+		i: INTEGER;
+		j: INTEGER;
+		
+
+    begin
+		write ("enter the first array");
+		read (tab1);
+		write ("enter the second array");
+		read(tab2);
+
+		WHILE(i<tab1.length ) DO
+			{
+				WHILE ((j<tab2.length) AND (tab1[i] <> tab2[j]) DO
+					{j++;}
+				IF (j = tab2.length) 
+				{
+            		sum = sum +tab1[i];
+            		i++;
+            		j = 0;
+        		}
+        		ELSE { i++; }
+    		}
+   		i = 0;
+    	j = 0;	
+		WHILE (j < tab2.length) DO 
+			{
+        		WHILE ((tab1[i] <> tab2[j]) AND (i < tab1.length)) DO
+					{i++;}
+
+        	IF (i = tab1.length) 
+			{
+            	sum = sum +tab2[j];
+            	j++;
+            	i = 0;
+        	}
+        	ELSE { j++; }
+    		}
+
+    	
+		
+		WRITE (sum);
+
+
+	
+end
+
+
+
+//SOLUTION 2: structure
+ALGORITHM SUM_ALL_DISTINCTS_ELEMENTS
+	var
+
+        sum: INTEGER;
+		i: INTEGER;
+		j: INTEGER;
+		tab_struct: struct_name :	STRUCT   
+							num : INTEGER; 
+							iteration : INTEGER;
+						END_STRUCT
+		tab1:ARRAY_OF tab_struct[50];
+	begin
+		FOR (i FROM 0 TO tab1.length STEP 1)
+			{IF(i.iteration=1)
+				{sum=sum+ i.num;}
+			}
+	write(sum);
+end
+
+
+//task2: SUM OF  OVERLAPPING ELEMENTS
+	//SOLUTION1: TWO ARRAYS
+ALGORITHM SUM_OVERLAPPING_ELEMENTS
+
+   	var
+        tab1: table of INTEGER[50];
+        tab2:  table of INTEGER[50];
+        sum: INTEGER;
+		i: INTEGER;
+		j: INTEGER;
+
+
+	begin
+		write ("enter the first array");
+		read (tab1);
+		write ("enter the second array");
+		read(tab2);
+
+		FOR  (i FROM 0 TO tab1.length STEP 1 ) 
+			{ 
+				FOR  (j FROM 0 TO tab2.length STEP 1 ) 
+					{  IF (tab1[i] = tab2[j])
+						{ sum =sum+ tab1[i]+tab2[j]; }
+					}
+			}
+
+	write(sum)
+end
+
+//SOLUTION 2: structure
+ALGORITHM SUM_ALL_DISTINCTS_ELEMENTS
+	var
+
+        sum: INTEGER;
+		i: INTEGER;
+		j: INTEGER;
+		tab_struct: struct_name :	STRUCT   
+							num : INTEGER; 
+							iteration : INTEGER;
+						END_STRUCT
+		tab1:ARRAY_OF tab_struct[50];
+	begin
+		FOR (i FROM 0 TO tab1.length STEP 1)
+			{IF(i.iteration<>1)
+				{sum=sum+ (i.num)*(i.iteration);}
+			}
+
+end
